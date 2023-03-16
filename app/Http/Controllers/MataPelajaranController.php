@@ -9,7 +9,7 @@ class MataPelajaranController extends Controller
 {
     public function index()
     {
-        $mk = MataPelajaran::paginate(15);
-        return view('mataPelajaran', ['mkList' => $mk]);
+        $mapel = MataPelajaran::paginate(15);
+        return view('mataPelajaran', ['mapelList' => $mapel]);
     }
 }

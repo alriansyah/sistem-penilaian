@@ -17,16 +17,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($mkList as $mk)
+            @foreach ($mapelList as $mapel)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $mk->name }}</td>
+                    <td>{{ $mapel->name }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
     <div class="my-4">
-        {{ $mkList->links() }}
+        {{ $mapelList->links() }}
     </div>
 @endsection
