@@ -55,8 +55,8 @@ class StudentSeeder extends Seeder
         }
 
         // Factory Faker
-        // Student::factory()
-        //     ->count(10)
-        //     ->create();
+        Student::factory()
+            ->count(1000)
+            ->create();
     }
 }
