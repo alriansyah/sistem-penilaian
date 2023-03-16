@@ -25,20 +25,25 @@ Route::get('/', function () {
 Route::controller(StudentController::class)->group(function () {
     Route::get('/student', 'index');
     Route::get('/student-detail/{id}', 'show');
+    Route::get('/student-add/{id}', 'create');
 });
 
 Route::controller(TeacherController::class)->group(function () {
     Route::get('/teacher', 'index');
+    Route::get('/teacher-detail/{id}', 'show');
 });
 
 Route::controller(JurusanController::class)->group(function () {
     Route::get('/jurusan', 'index');
+    Route::get('/jurusan-detail/{id}', 'show');
 });
 
 Route::controller(ClassController::class)->group(function () {
     Route::get('/class', 'index');
+    Route::get('/class-detail/{id}', 'show');
 });
 
 Route::controller(MataPelajaranController::class)->group(function () {
-    Route::get('/mp', 'index');
+    Route::get('/mapel', 'index');
+    Route::get('/mapel-detail/{id}', 'show');
 });

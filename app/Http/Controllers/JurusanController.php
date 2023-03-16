@@ -12,4 +12,10 @@ class JurusanController extends Controller
         $jurusan = Jurusan::paginate(15);
         return view('jurusan', ['jurusanList' => $jurusan]);
     }
+
+    public function show($id)
+    {
+        $jurusan = Jurusan::findOrFail($id);
+        return view('jurusan-detail', ['jurusanDetail' => $jurusan]);
+    }
 }

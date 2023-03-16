@@ -12,4 +12,10 @@ class StudentController extends Controller
         $student = Student::paginate(15);
         return view('student', ['studentList' => $student]);
     }
+
+    public function show($id)
+    {
+        $student = Student::findOrFail($id);
+        return view('student-detail', ['studentDetail' => $student]);
+    }
 }

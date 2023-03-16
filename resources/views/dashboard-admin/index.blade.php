@@ -98,14 +98,14 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/mp">
+                <a class="nav-link" href="/mapel">
                     <i class="fa-solid fa-book-open-reader"></i>
                     <span>Mata Pelajaran</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/mp">
+                <a class="nav-link" href="/">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Data Nilai</span>
                 </a>

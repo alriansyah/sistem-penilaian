@@ -13,6 +13,7 @@
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,9 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $jurusan->name }}</td>
+                    <td>
+                        <a href="/jurusan-detail/{{ $jurusan->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

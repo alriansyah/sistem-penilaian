@@ -15,8 +15,7 @@
                 <th>Nama</th>
                 <th>Gender</th>
                 <th>Nis</th>
-                <th>No HP</th>
-                <th>Alamat</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +25,9 @@
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->gender }}</td>
                     <td>{{ $student->nis }}</td>
-                    <td>{{ $student->no_hp }}</td>
-                    <td>{{ $student->alamat }}</td>
+                    <td>
+                        <a href="/student-detail/{{ $student->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

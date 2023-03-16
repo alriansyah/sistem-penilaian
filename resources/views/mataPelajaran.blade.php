@@ -14,6 +14,7 @@
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $mapel->name }}</td>
+                    <td>
+                        <a href="/mapel-detail/{{ $mapel->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

@@ -12,4 +12,10 @@ class ClassController extends Controller
         $class = ClassRoom::paginate(15);
         return view('class', ['classList' => $class]);
     }
+
+    public function show($id)
+    {
+        $class = ClassRoom::findOrFail($id);
+        return view('class-detail', ['classDetail' => $class]);
+    }
 }
