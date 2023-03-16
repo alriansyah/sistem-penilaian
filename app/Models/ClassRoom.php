@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ClassRoom extends Model
 {
     use HasFactory;
+    protected $table = 'class';
+    protected $fillable = [
+        'name',
+    ];
 }

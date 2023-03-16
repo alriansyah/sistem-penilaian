@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('teacher', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
+            $table->string('gender', 20);
+            $table->string('nip', 50);
+            $table->string('no_hp', 50);
+            $table->string('alamat', 100);
+            $table->string('foto', 255)->nullable();
             $table->string('email', 255);
             $table->string('password', 255);
             $table->timestamps();
