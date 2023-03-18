@@ -12631,3 +12631,11 @@ body.sidebar-toggled footer.sticky-footer {
     margin: 0px;
     padding: 0px;
 }
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.text-blac {
+    color: whitesmoke;
+}

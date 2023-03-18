@@ -25,7 +25,8 @@ Route::get('/', function () {
 Route::controller(StudentController::class)->group(function () {
     Route::get('/student', 'index');
     Route::get('/student-detail/{id}', 'show');
-    Route::get('/student-add/{id}', 'create');
+    Route::get('/student-add', 'create');
+    Route::post('/student', 'store');
 });
 
 Route::controller(TeacherController::class)->group(function () {
