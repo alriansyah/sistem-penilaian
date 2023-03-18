@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentCreateRequest extends FormRequest
+class TeacherCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,11 @@ class StudentCreateRequest extends FormRequest
         return [
             'name' => 'required',
             'gender' => 'required',
-            'nis' => 'required|unique:students|max:11',
-            'no_hp' => 'required|unique:students|max:100',
+            'nip' => 'required|unique:teacher|max:11',
+            'no_hp' => 'required|unique:teacher|max:100',
             'alamat' => 'required|max:100',
             'foto' => 'image',
-            'email' => 'required|unique:students|unique:users|unique:teacher',
+            'email' => 'required|unique:teacher|unique:users|unique:students',
             'password' => 'required',
             'role_id' => 'required'
         ];
@@ -45,10 +45,10 @@ class StudentCreateRequest extends FormRequest
     {
         return [
             'name.required' => 'Nama wajib diisi.!',
-            'gender.required' => 'Jenis Kelamin wajib diisi.!',
-            'nis.required' => 'NIS wajib diisi.!',
-            'nis.unique' => 'NIS sudah digunakan user lain.!',
-            'nis.max' => 'NIS tidak boleh lebih dari :max digit.!',
+            'gender.required' => 'Jep Kelamin wajib diisi.!',
+            'nip.required' => 'NIP wajib diisi.!',
+            'nip.unique' => 'NIP sudah digunakan user lain.!',
+            'nip.max' => 'NIP tidak boleh lebih dari :max digit.!',
             'no_hp.required' => 'Nomor HP wajib diisi.!',
             'no_hp.unique' => 'Nomor HP sudah digunakan user lain.!',
             'no_hp.max' => 'Alamat terlalu panjang.!',

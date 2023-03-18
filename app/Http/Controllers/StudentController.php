@@ -35,7 +35,7 @@ class StudentController extends Controller
         $newName = '';
         if ($request->file('foto')) {
             $extension = $request->file('foto')->getClientOriginalExtension();
-            $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+            $newName = $request->name . '-' . now()->timestamp.'-'.'student'.'.'. $extension;
             $request->file('foto')->storeAs('post-image', $newName);
         }
 
@@ -48,6 +48,7 @@ class StudentController extends Controller
             'foto' => $request['foto'] = $newName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'rule_id' => $request->rule_id
         ]);
 
         if ($student) {

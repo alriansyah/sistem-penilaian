@@ -1,14 +1,14 @@
 @extends('dashboard-admin.index')
 
-@section('title', 'Student Add')
+@section('title', 'Teacher Add')
 
 @section('keterangan')
-    <h1 class="h3 mb-0 text-gray-800">Student Add</h1>
+    <h1 class="h3 mb-0 text-gray-800">Teacher Add</h1>
 @endsection
 
 @section('content')
     <div class="container col-8 m-0">
-        <form action="/student" method="POST" enctype="multipart/form-data">
+        <form action="/teacher" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="name" class="label-control">Nama</label>
@@ -34,10 +34,10 @@
             </div>
 
             <div class="mb-4">
-                <label for="nis" class="label-control">NIS</label>
-                <input type="number" id="nis" name="nis" class="form-control @error('nis') is-invalid @enderror">
+                <label for="nip" class="label-control">Nip</label>
+                <input type="number" id="nip" name="nip" class="form-control @error('nip') is-invalid @enderror">
 
-                @error('nis')
+                @error('nip')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
