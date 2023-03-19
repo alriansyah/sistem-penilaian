@@ -53,7 +53,7 @@ class StudentController extends Controller
 
         if ($student) {
             Session::flash('status', 'success'); // flash('keyword', 'value')
-            Session::flash('message', 'Add new siswa success.!');
+            Session::flash('message', 'Add new sstudent success.!');
         }
 
         return redirect('/student');

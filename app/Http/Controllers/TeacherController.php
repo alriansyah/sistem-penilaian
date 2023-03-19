@@ -52,7 +52,7 @@ class TeacherController extends Controller
 
         if ($teacher) {
             Session::flash('status', 'success'); // flash('keyword', 'value')
-            Session::flash('message', 'Add new siswa success.!');
+            Session::flash('message', 'Add new teacher success.!');
         }
 
         return redirect('/teacher');

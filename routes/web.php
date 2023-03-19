@@ -39,14 +39,20 @@ Route::controller(TeacherController::class)->group(function () {
 Route::controller(JurusanController::class)->group(function () {
     Route::get('/jurusan', 'index');
     Route::get('/jurusan-detail/{id}', 'show');
+    Route::get('/jurusan-add', 'create');
+    Route::post('/jurusan', 'store');
 });
 
 Route::controller(ClassController::class)->group(function () {
     Route::get('/class', 'index');
     Route::get('/class-detail/{id}', 'show');
+    Route::get('/class-add', 'create');
+    Route::post('/class', 'store');
 });
 
 Route::controller(MataPelajaranController::class)->group(function () {
     Route::get('/mapel', 'index');
     Route::get('/mapel-detail/{id}', 'show');
+    Route::get('/mapel-add', 'create');
+    Route::post('/mapel', 'store');
 });

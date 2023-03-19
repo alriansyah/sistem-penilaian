@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ClassCreateRequest;
+use App\Models\Jurusan;
 
 class ClassController extends Controller
 {
@@ -17,5 +20,23 @@ class ClassController extends Controller
     {
         $class = ClassRoom::findOrFail($id);
         return view('class-detail', ['classDetail' => $class]);
+    }
+
+    public function create()
+    {
+        $jurusan = Jurusan::select('id', 'name')->get();
+        return view('class-add', ['jurusanList' => $jurusan]);
+    }
+
+    public function store(ClassCreateRequest $request)
+    {
+        $class = ClassRoom::create($request->all());
+
+        if ($class) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Add new class success.!');
+        }
+
+        return redirect('/class');
     }
 }

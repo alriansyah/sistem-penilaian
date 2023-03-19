@@ -11,5 +11,6 @@ class ClassRoom extends Model
     protected $table = 'class';
     protected $fillable = [
         'name',
+        'jurusan_id',
     ];
 }

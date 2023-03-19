@@ -7,7 +7,16 @@
 @endsection
 
 @section('content')
-    <h5>Ini halaman data jurusan</h5>
+    <div class="mb-3">
+        <a href="/jurusan-add" class="btn btn-primary">Tambah Data &nbsp;<i class="fa-solid fa-plus"></i></a>
+    </div>
+
+    @if (Session::has('status'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('message') }}
+        </div>
+    @endif
+
     <table class="table table-hover table-bordered border-light">
         <thead class="bg-dark text-white">
             <tr>
