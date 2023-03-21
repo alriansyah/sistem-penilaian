@@ -8,6 +8,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StudentCreateRequest;
 
 class StudentController extends Controller
@@ -35,7 +36,7 @@ class StudentController extends Controller
         $newName = '';
         if ($request->file('foto')) {
             $extension = $request->file('foto')->getClientOriginalExtension();
-            $newName = $request->name . '-' . now()->timestamp.'-'.'student'.'.'. $extension;
+            $newName = $request->name . '-' . now()->timestamp . '-' . 'student' . '.' . $extension;
             $request->file('foto')->storeAs('post-image', $newName);
         }
 
@@ -48,12 +49,55 @@ class StudentController extends Controller
             'foto' => $request['foto'] = $newName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rule_id' => $request->rule_id
+            'role_id' => $request->role_id
         ]);
 
         if ($student) {
             Session::flash('status', 'success'); // flash('keyword', 'value')
-            Session::flash('message', 'Add new sstudent success.!');
+            Session::flash('message', 'Add new student success.!');
+        }
+
+        return redirect('/student');
+    }
+
+    public function edit($id)
+    {
+        $student = Student::with('role')->findOrFail($id);
+        $role = Role::where('id', '!=', $student->role_id)->select('id', 'name')->get();
+        return view('student-edit', ['studentList' => $student, 'roleList' => $role]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::findOrFail($id);
+
+        $oldFoto = $student->foto;
+
+        $newName = $oldFoto;
+        if ($request->file('foto')) {
+            if ($oldFoto) {
+                Storage::delete('post-image/' . $oldFoto);
+            }
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . '-' . 'student' . '.' . $extension;
+            $request->file('foto')->storeAs('post-image', $newName);
+        };
+
+        $student->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'nis' => $request->nis,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'foto' => $request['foto'] = $newName,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+
+        if ($student) {
+            Session::flash('status', 'success'); // flash('keyword', 'value')
+            Session::flash('message', 'Update student success.!');
         }
 
         return redirect('/student');

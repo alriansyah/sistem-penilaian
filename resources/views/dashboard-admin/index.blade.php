@@ -105,7 +105,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/nilai">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Data Nilai</span>
                 </a>

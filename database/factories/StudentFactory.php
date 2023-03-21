@@ -22,12 +22,13 @@ class StudentFactory extends Factory
         return [
             'name' => $this->faker->name(1),
             'gender' => Arr::random(['Laki-laki', 'Perempuan']),
-            'nis' => mt_rand(00000000001,99999999999),
+            'nis' => mt_rand(00000000001, 99999999999),
             'no_hp' => $this->faker->phoneNumber(),
             'alamat' => $this->faker->address(),
             'foto' => '',
-            'email' => Str::random(10).'@gmail.com',
+            'email' => Str::random(10) . '@gmail.com',
             'password' => Hash::make('password'),
+            'role_id' => Arr::random([1, 2, 3])
         ];
     }
 }

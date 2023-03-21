@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use App\Models\Student;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +50,7 @@ class StudentSeeder extends Seeder
                 'alamat' => $value['alamat'],
                 'email' => $value['name'].'.'.'konoha'.'@gmail.com',
                 'password' => Hash::make('password'),
+                'role_id' => Arr::random([1, 2, 3]),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
