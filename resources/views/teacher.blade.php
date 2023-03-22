@@ -36,6 +36,7 @@
                     <td>{{ $teacher->nip }}</td>
                     <td>
                         <a href="/teacher-detail/{{ $teacher->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                        <a href="/teacher-edit/{{ $teacher->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     </td>
                 </tr>
             @endforeach

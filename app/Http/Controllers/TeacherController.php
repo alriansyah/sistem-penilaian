@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\TeacherCreateRequest;
 
 class TeacherController extends Controller
@@ -34,7 +35,7 @@ class TeacherController extends Controller
         $newName = '';
         if ($request->file('foto')) {
             $extension = $request->file('foto')->getClientOriginalExtension();
-            $newName = $request->name . '-' . now()->timestamp.'-'.'teacher'. '.'. $extension;
+            $newName = $request->name . '-' . now()->timestamp . '-' . 'teacher' . '.' . $extension;
             $request->file('foto')->storeAs('post-image', $newName);
         }
 
@@ -53,6 +54,49 @@ class TeacherController extends Controller
         if ($teacher) {
             Session::flash('status', 'success'); // flash('keyword', 'value')
             Session::flash('message', 'Add new teacher success.!');
+        }
+
+        return redirect('/teacher');
+    }
+
+    public function edit($id)
+    {
+        $teacher = Teacher::with('role')->findOrFail($id);
+        $role = Role::where('id', '!=', $teacher->role_id)->select('id', 'name')->get();
+        return view('teacher-edit', ['teacherList' => $teacher, 'roleList' => $role]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $teacher = Teacher::findOrFail($id);
+
+        $oldFoto = $teacher->foto;
+
+        $newName = $oldFoto;
+        if ($request->file('foto')) {
+            if ($oldFoto) {
+                Storage::delete('post-image/' . $oldFoto);
+            }
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . '-' . 'teacher' . '.' . $extension;
+            $request->file('foto')->storeAs('post-image', $newName);
+        };
+
+        $teacher->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'nip' => $request->nip,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'foto' => $request['foto'] = $newName,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+
+        if ($teacher) {
+            Session::flash('status', 'success'); // flash('keyword', 'value')
+            Session::flash('message', 'Update teacher success.!');
         }
 
         return redirect('/teacher');

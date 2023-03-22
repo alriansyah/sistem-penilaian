@@ -37,6 +37,8 @@ Route::controller(TeacherController::class)->group(function () {
     Route::get('/teacher-detail/{id}', 'show');
     Route::get('/teacher-add', 'create');
     Route::post('/teacher', 'store');
+    Route::get('/teacher-edit/{id}', 'edit');
+    Route::put('/teacher/{id}', 'update');
 });
 
 Route::controller(JurusanController::class)->group(function () {
