@@ -32,6 +32,7 @@
                     <td>{{ $mapel->name }}</td>
                     <td>
                         <a href="/mapel-detail/{{ $mapel->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                        <a href="/mapel-edit/{{ $mapel->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     </td>
                 </tr>
             @endforeach

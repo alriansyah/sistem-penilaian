@@ -64,6 +64,8 @@ Route::controller(MataPelajaranController::class)->group(function () {
     Route::get('/mapel-detail/{id}', 'show');
     Route::get('/mapel-add', 'create');
     Route::post('/mapel', 'store');
+    Route::get('/mapel-edit/{id}', 'edit');
+    Route::put('/mapel/{id}', 'update');
 });
 
 Route::controller(NilaiController::class)->group(function () {

@@ -1,20 +1,20 @@
 @extends('dashboard-admin.index')
 
-@section('title', 'Class Edit')
+@section('title', 'Mapel Edit')
 
 @section('keterangan')
-    <h1 class="h3 mb-0 text-gray-800">Class Edit</h1>
+    <h1 class="h3 mb-0 text-gray-800">Mata Pelajaran Edit</h1>
 @endsection
 
 @section('content')
     <div class="container col-8 m-0">
-        <form action="/class/{{ $classEdit->id }}" method="POST">
+        <form action="/mapel/{{ $mapelEdit->id }}" method="POST">
             @method('PUT')
             @csrf
             <div class="mb-4">
                 <label for="name" class="label-control">Nama</label>
                 <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror"
-                    value="{{ $classEdit->name }}">
+                    value="{{ $mapelEdit->name }}">
 
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
@@ -22,20 +22,20 @@
             </div>
 
             <div class="mb-4">
-                <label for="name" class="label-control">Jurusan</label>
-                <select name="jurusan_id" id="jurusan_id" class="form-control @error('jurusan_id') is-invalid @enderror">
-                    @if ($classEdit->jurusan != null)
-                        <option value="{{ $classEdit->jurusan->id }}">{{ $classEdit->jurusan->name }}</option>
+                <label for="name" class="label-control">Kelas</label>
+                <select name="class_id" id="class_id" class="form-control @error('class_id') is-invalid @enderror">
+                    @if ($mapelEdit->class != null)
+                        <option value="{{ $mapelEdit->class->id }}">{{ $mapelEdit->class->name }}</option>
                     @else
-                        <option value="{{ $classEdit->jurusan }}">{{ $classEdit->jurusan }}</option>
+                        <option value="{{ $mapelEdit->class }}">{{ $mapelEdit->class }}</option>
                     @endif
 
-                    @foreach ($jurusanList as $jurusan)
-                        <option value="{{ $jurusan->id }}">{{ $jurusan->name }}</option>
+                    @foreach ($classList as $class)
+                        <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
                 </select>
 
-                @error('jurusan_id')
+                @error('class_id')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

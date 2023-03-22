@@ -44,8 +44,7 @@ class ClassController extends Controller
     public function edit($id)
     {
         $class = ClassRoom::with('jurusan')->findOrFail($id);
-        $jurusan = Jurusan::select('id', 'name')->get();
-        // dd($class);
+        $jurusan = Jurusan::where('id', '!=', $class->jurusan_id)->select('id', 'name')->get();
         return  view('class-edit', ['classEdit' => $class, 'jurusanList' => $jurusan]);
     }
 

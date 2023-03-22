@@ -26,7 +26,7 @@ class MataPelajaranController extends Controller
 
     public function create()
     {
-        $class = ClassRoom::select('id', 'name')->get(); 
+        $class = ClassRoom::select('id', 'name')->get();
         return view('mapel-add', ['classList'  => $class]);
     }
 
@@ -37,6 +37,27 @@ class MataPelajaranController extends Controller
         if ($mapel) {
             Session::flash('status', 'success');
             Session::flash('message', 'Add new mata pelajaran success.!');
+        }
+
+        return redirect('/mapel');
+    }
+
+    public function edit($id)
+    {
+        $mapel = MataPelajaran::with('class')->findOrFail($id);
+        $class = ClassRoom::where('id', '!=', $mapel->class_id)->select('id', 'name')->get();
+
+        return view('mapel-edit', ['mapelEdit' => $mapel, 'classList' => $class]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $mapel = MataPelajaran::findOrFail($id);
+        $mapel->update($request->all());
+
+        if ($mapel) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Edit Mata Pelajaran success.!');
         }
 
         return redirect('/mapel');
