@@ -46,6 +46,8 @@ Route::controller(JurusanController::class)->group(function () {
     Route::get('/jurusan-detail/{id}', 'show');
     Route::get('/jurusan-add', 'create');
     Route::post('/jurusan', 'store');
+    Route::get('/jurusan-edit/{id}', 'edit');
+    Route::put('/jurusan/{id}', 'update');
 });
 
 Route::controller(ClassController::class)->group(function () {

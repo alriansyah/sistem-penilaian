@@ -7,9 +7,6 @@
 @endsection
 
 @section('content')
-    {{ $teacherList }} <br><br>
-    {{ $roleList }}
-
     <div class="container col-8 m-0">
         <form action="/teacher/{{ $teacherList->id }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
@@ -107,7 +104,7 @@
                     @if ($teacherList->role != null)
                         <option value="{{ $teacherList->role->id }}">{{ $teacherList->role->name }}</option>
                     @else
-                        <option value="{{ $teacherList->role }}">{{ $teacherList->role}}</option>
+                        <option value="{{ $teacherList->role }}">{{ $teacherList->role }}</option>
                     @endif
 
                     @foreach ($roleList as $role)

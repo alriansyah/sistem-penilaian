@@ -37,4 +37,23 @@ class JurusanController extends Controller
 
         return redirect('/jurusan');
     }
+
+    public function edit($id)
+    {
+        $jurusan = Jurusan::findOrFail($id);
+        return view('jurusan-edit', ['jurusanEdit' => $jurusan]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $jurusan = Jurusan::findOrFail($id);
+        $jurusan->update($request->all());
+
+        if ($jurusan) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Edit jurusan success.!');
+        }
+
+        return redirect('/jurusan');
+    }
 }

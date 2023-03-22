@@ -32,6 +32,7 @@
                     <td>{{ $jurusan->name }}</td>
                     <td>
                         <a href="/jurusan-detail/{{ $jurusan->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                        <a href="/jurusan-edit/{{ $jurusan->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     </td>
                 </tr>
             @endforeach

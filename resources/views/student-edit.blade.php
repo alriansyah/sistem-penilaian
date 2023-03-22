@@ -7,9 +7,6 @@
 @endsection
 
 @section('content')
-    {{ $studentList }} <br><br>
-    {{ $roleList }}
-
     <div class="container col-8 m-0">
         <form action="/student/{{ $studentList->id }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
