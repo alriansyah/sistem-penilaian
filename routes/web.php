@@ -55,6 +55,8 @@ Route::controller(ClassController::class)->group(function () {
     Route::get('/class-detail/{id}', 'show');
     Route::get('/class-add', 'create');
     Route::post('/class', 'store');
+    Route::get('/class-edit/{id}', 'edit');
+    Route::put('/class/{id}', 'update');
 });
 
 Route::controller(MataPelajaranController::class)->group(function () {

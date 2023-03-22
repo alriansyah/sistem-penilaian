@@ -32,6 +32,7 @@
                     <td>{{ $class->name }}</td>
                     <td>
                         <a href="/class-detail/{{ $class->id }}"><i class="fa-regular fa-eye fa-lg"></i></a>
+                        <a href="/class-edit/{{ $class->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     </td>
                 </tr>
             @endforeach
