@@ -7,22 +7,18 @@
 @endsection
 
 @section('content')
+{{-- {{ $nilaiList }} --}}
+
+
     @if (Session::has('status'))
         <div class="alert alert-success" role="alert">
             {{ Session::get('message') }}
         </div>
     @endif
 
-    {{-- @php
-        foreach ($nilaiList as $nilai) {
-            echo $nilai;
-        }
-        
-    @endphp --}}
-
-    <div class="mb-3 mt-3">
+    {{-- <div class="mb-3 mt-3">
         <a href="/nilai-add" class="btn btn-primary">Tambah Data &nbsp;<i class="fa-solid fa-plus"></i></a>
-    </div>
+    </div> --}}
 
     <table class="table table-hover table-bordered border-light">
         <thead class="bg-dark text-white">
@@ -55,7 +51,7 @@
                         @endforeach
                     </td>
                     <td>
-                        <a href="/nilai-add-2/{{ $student->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                        <a href="/nilai-edit/{{ $student->id }}"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     </td>
                 </tr>
             @endforeach

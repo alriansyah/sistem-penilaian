@@ -73,4 +73,7 @@ Route::controller(NilaiController::class)->group(function () {
     Route::get('/nilai-detail/{id}', 'show');
     Route::get('/nilai-add', 'create');
     Route::post('/nilai', 'store');
+
+    Route::get('/nilai-edit/{id}', 'edit');
+    Route::post('/nilai/{id}', 'update');
 });
