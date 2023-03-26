@@ -30,6 +30,10 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('/student', 'store');
     Route::get('/student-edit/{id}', 'edit');
     Route::put('/student/{id}', 'update');
+    Route::get('/student-delete/{id}', 'delete');
+    Route::delete('/student-destroy/{id}', 'destroy');
+    Route::get('/student-deleted', 'deletedStudent');
+    Route::get('/student/{id}/restore', 'restore');
 });
 
 Route::controller(TeacherController::class)->group(function () {

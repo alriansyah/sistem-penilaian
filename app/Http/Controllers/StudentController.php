@@ -102,4 +102,38 @@ class StudentController extends Controller
 
         return redirect('/student');
     }
+
+    public function destroy($id)
+    {
+        $deletedStudent = Student::findOrFail($id);
+        $deletedStudent->delete();
+        
+        $oldFoto = $deletedStudent->foto;
+        Storage::delete('post-image/' . $oldFoto);
+
+        if ($deletedStudent) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete student success.!');
+        }
+
+        return redirect('/student');
+    }
+
+    public function deletedStudent()
+    {
+        $deletedStudent = Student::onlyTrashed()->get();
+        
+        return view('student-deleted-list', ['studentList' => $deletedStudent]);
+    }
+
+    public function restore($id)
+    {
+        $deletedStudent = Student::withTrashed()->where('id', $id)->restore();
+        if ($deletedStudent) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore student success.!');
+        }
+        
+        return redirect('/student');
+    }
 }
