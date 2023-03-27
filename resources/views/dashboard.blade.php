@@ -103,5 +103,6 @@
 @endsection
 
 @section('content')
-    <h3>Ini Halaman Dashboard</h3>
+    <h4>Selamat datang {{ Auth::user()->name }}. Anda login sebagai : {{ Auth::user()->role->name }}</h4>
+    <p>{{ Auth::user() }}</p>
 @endsection
