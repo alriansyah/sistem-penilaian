@@ -56,4 +56,35 @@ class JurusanController extends Controller
 
         return redirect('/jurusan');
     }
+
+    public function destroy($id)
+    {
+        $deletedJurusan = Jurusan::findOrFail($id);
+        $deletedJurusan->delete();
+
+        if ($deletedJurusan) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete jurusan success.!');
+        }
+
+        return redirect('/jurusan');
+    }
+
+    public function deletedJurusan()
+    {
+        $deletedJurusan = Jurusan::onlyTrashed()->get();
+
+        return view('jurusan-deleted-list', ['jurusanList' => $deletedJurusan]);
+    }
+
+    public function restore($id)
+    {
+        $deletedJurusan = Jurusan::withTrashed()->where('id', $id)->restore();
+        if ($deletedJurusan) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore jurusan success.!');
+        }
+
+        return redirect('/jurusan');
+    }
 }
