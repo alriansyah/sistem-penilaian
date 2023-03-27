@@ -54,7 +54,6 @@ Route::controller(JurusanController::class)->group(function () {
     Route::post('/jurusan', 'store');
     Route::get('/jurusan-edit/{id}', 'edit');
     Route::put('/jurusan/{id}', 'update');
-
     Route::delete('/jurusan-destroy/{id}', 'destroy');
     Route::get('/jurusan-deleted', 'deletedJurusan');
     Route::get('/jurusan/{id}/restore', 'restore');
@@ -68,9 +67,9 @@ Route::controller(ClassController::class)->group(function () {
     Route::get('/class-edit/{id}', 'edit');
     Route::put('/class/{id}', 'update');
 
-    Route::delete('/student-destroy/{id}', 'destroy');
-    Route::get('/student-deleted', 'deletedStudent');
-    Route::get('/student/{id}/restore', 'restore');
+    Route::delete('/class-destroy/{id}', 'destroy');
+    Route::get('/class-deleted', 'deletedClass');
+    Route::get('/class/{id}/restore', 'restore');
 });
 
 Route::controller(MataPelajaranController::class)->group(function () {

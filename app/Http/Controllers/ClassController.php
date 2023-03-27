@@ -51,12 +51,43 @@ class ClassController extends Controller
     public function update(Request $request, $id)
     {
         $class = ClassRoom::findOrFail($id);
-        
+
         $class->update($request->all());
 
         if ($class) {
             Session::flash('status', 'success');
             Session::flash('message', 'Edit class success.!');
+        }
+
+        return redirect('/class');
+    }
+
+    public function destroy($id)
+    {
+        $deletedClass = ClassRoom::findOrFail($id);
+        $deletedClass->delete();
+
+        if ($deletedClass) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete kelas success.!');
+        }
+
+        return redirect('/class');
+    }
+
+    public function deletedClass()
+    {
+        $deletedClass = ClassRoom::onlyTrashed()->get();
+
+        return view('class-deleted-list', ['classList' => $deletedClass]);
+    }
+
+    public function restore($id)
+    {
+        $deletedClass = ClassRoom::withTrashed()->where('id', $id)->restore();
+        if ($deletedClass) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore class success.!');
         }
 
         return redirect('/class');
