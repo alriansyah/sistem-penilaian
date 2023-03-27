@@ -66,7 +66,6 @@ Route::controller(ClassController::class)->group(function () {
     Route::post('/class', 'store');
     Route::get('/class-edit/{id}', 'edit');
     Route::put('/class/{id}', 'update');
-
     Route::delete('/class-destroy/{id}', 'destroy');
     Route::get('/class-deleted', 'deletedClass');
     Route::get('/class/{id}/restore', 'restore');
@@ -80,9 +79,9 @@ Route::controller(MataPelajaranController::class)->group(function () {
     Route::get('/mapel-edit/{id}', 'edit');
     Route::put('/mapel/{id}', 'update');
 
-    Route::delete('/student-destroy/{id}', 'destroy');
-    Route::get('/student-deleted', 'deletedStudent');
-    Route::get('/student/{id}/restore', 'restore');
+    Route::delete('/mapel-destroy/{id}', 'destroy');
+    Route::get('/mapel-deleted', 'deletedMapel');
+    Route::get('/mapel/{id}/restore', 'restore');
 });
 
 Route::controller(NilaiController::class)->group(function () {

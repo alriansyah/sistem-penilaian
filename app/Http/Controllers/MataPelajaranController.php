@@ -62,4 +62,36 @@ class MataPelajaranController extends Controller
 
         return redirect('/mapel');
     }
+
+    public function destroy($id)
+    {
+        $deletedMapel = MataPelajaran::findOrFail($id);
+        $deletedMapel->delete();
+        
+        if ($deletedMapel) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete mapel success.!');
+        }
+
+        return redirect('/mapel');
+    }
+
+    public function deletedMapel()
+    {
+        $deletedMapel = MataPelajaran::onlyTrashed()->get();
+        
+        return view('mapel-deleted-list', ['mapelList' => $deletedMapel]);
+    }
+
+    public function restore($id)
+    {
+        $deletedMapel = MataPelajaran::withTrashed()->where('id', $id)->restore();
+
+        if ($deletedMapel) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore mata pelajaran success.!');
+        }
+
+        return redirect('/mapel');
+    }
 }
