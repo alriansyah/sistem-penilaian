@@ -95,7 +95,6 @@ Route::controller(NilaiController::class)->group(function () {
     Route::get('/nilai-detail/{id}', 'show')->middleware('auth');
     Route::get('/nilai-add', 'create')->middleware('auth');
     Route::post('/nilai', 'store')->middleware('auth');
-
     Route::get('/nilai-edit/{id}', 'edit')->middleware('auth');
     Route::post('/nilai/{id}', 'update')->middleware('auth');
 });

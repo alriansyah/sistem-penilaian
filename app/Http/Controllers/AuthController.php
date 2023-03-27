@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -28,6 +29,17 @@ class AuthController extends Controller
 
         Session::flash('status', 'failed');
         Session::flash('message', 'Gagal login.!');
+
+        return redirect('/login');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return redirect('/login');
     }
