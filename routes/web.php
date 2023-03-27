@@ -30,7 +30,6 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('/student', 'store');
     Route::get('/student-edit/{id}', 'edit');
     Route::put('/student/{id}', 'update');
-    Route::get('/student-delete/{id}', 'delete');
     Route::delete('/student-destroy/{id}', 'destroy');
     Route::get('/student-deleted', 'deletedStudent');
     Route::get('/student/{id}/restore', 'restore');
@@ -43,6 +42,9 @@ Route::controller(TeacherController::class)->group(function () {
     Route::post('/teacher', 'store');
     Route::get('/teacher-edit/{id}', 'edit');
     Route::put('/teacher/{id}', 'update');
+    Route::delete('/teacher-destroy/{id}', 'destroy');
+    Route::get('/teacher-deleted', 'deletedTeacher');
+    Route::get('/teacher/{id}/restore', 'restore');
 });
 
 Route::controller(JurusanController::class)->group(function () {
@@ -52,6 +54,10 @@ Route::controller(JurusanController::class)->group(function () {
     Route::post('/jurusan', 'store');
     Route::get('/jurusan-edit/{id}', 'edit');
     Route::put('/jurusan/{id}', 'update');
+
+    Route::delete('/jurusan-destroy/{id}', 'destroy');
+    Route::get('/jurusan-deleted', 'deletedJurusan');
+    Route::get('/jurusan/{id}/restore', 'restore');
 });
 
 Route::controller(ClassController::class)->group(function () {
@@ -61,6 +67,10 @@ Route::controller(ClassController::class)->group(function () {
     Route::post('/class', 'store');
     Route::get('/class-edit/{id}', 'edit');
     Route::put('/class/{id}', 'update');
+
+    Route::delete('/student-destroy/{id}', 'destroy');
+    Route::get('/student-deleted', 'deletedStudent');
+    Route::get('/student/{id}/restore', 'restore');
 });
 
 Route::controller(MataPelajaranController::class)->group(function () {
@@ -70,6 +80,10 @@ Route::controller(MataPelajaranController::class)->group(function () {
     Route::post('/mapel', 'store');
     Route::get('/mapel-edit/{id}', 'edit');
     Route::put('/mapel/{id}', 'update');
+
+    Route::delete('/student-destroy/{id}', 'destroy');
+    Route::get('/student-deleted', 'deletedStudent');
+    Route::get('/student/{id}/restore', 'restore');
 });
 
 Route::controller(NilaiController::class)->group(function () {

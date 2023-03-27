@@ -101,4 +101,38 @@ class TeacherController extends Controller
 
         return redirect('/teacher');
     }
+
+    public function destroy($id)
+    {
+        $deletedTeacher = Teacher::findOrFail($id);
+        $deletedTeacher->delete();
+        
+        $oldFoto = $deletedTeacher->foto;
+        Storage::delete('post-image/' . $oldFoto);
+
+        if ($deletedTeacher) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Delete teacher success.!');
+        }
+
+        return redirect('/teacher');
+    }
+
+    public function deletedTeacher()
+    {
+        $deletedTeacher = Teacher::onlyTrashed()->get();
+        
+        return view('teacher-deleted-list', ['teacherList' => $deletedTeacher]);
+    }
+
+    public function restore($id)
+    {
+        $deletedTeacher = Teacher::withTrashed()->where('id', $id)->restore();
+        if ($deletedTeacher) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Restore teacher success.!');
+        }
+        
+        return redirect('/teacher');
+    }
 }
