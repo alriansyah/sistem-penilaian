@@ -89,9 +89,9 @@
             </div>
 
             <div class="mb-4">
-                <label for="name" class="label-control">Password</label>
+                <label for="password" class="label-control">Password</label>
                 <input type="password" id="password" name="password"
-                    class="form-control @error('password') is-invalid @enderror" value="{{ $studentList->no_hp }}">
+                    class="form-control @error('password') is-invalid @enderror">
 
                 @error('password')
                     <div class="text-danger">{{ $message }}</div>
