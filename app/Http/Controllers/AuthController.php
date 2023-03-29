@@ -21,7 +21,15 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // guard student
+        if (Auth::guard('student')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+        // guard user/admin
+        if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('/');
