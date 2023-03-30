@@ -28,6 +28,13 @@ class AuthController extends Controller
             return redirect()->intended('/student/dashboard');
         }
 
+        // guard teacher
+        if (Auth::guard('teacher')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/teacher/dashboard');
+        }
+
         // guard user/admin
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
