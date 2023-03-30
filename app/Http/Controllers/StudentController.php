@@ -107,7 +107,12 @@ class StudentController extends Controller
     {
         $deletedStudent = Student::findOrFail($id);
         $deletedStudent->delete();
+
+        // hapus value
+        $deletedStudent->foto = null;
+        $deletedStudent->save();
         
+        // hapus image in storage 
         $oldFoto = $deletedStudent->foto;
         Storage::delete('post-image/' . $oldFoto);
 

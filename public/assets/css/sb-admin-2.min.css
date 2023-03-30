@@ -2081,6 +2081,11 @@ pre code {
     .table-responsive-md>.table-bordered {
         border: 0
     }
+
+    /* custom login form resposive */
+    .login-box {
+        width: 90%;
+    }
 }
 
 @media (max-width:991.98px) {
@@ -12650,4 +12655,12 @@ body.sidebar-toggled footer.sticky-footer {
 
 .color {
     color: white;
+}
+
+@media (max-width: 578px) {
+
+    /* custom login form resposive */
+    .login-box {
+        width: 90%;
+    }
 }

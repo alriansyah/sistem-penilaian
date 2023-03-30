@@ -8,6 +8,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\StudentDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,7 +102,6 @@ Route::controller(NilaiController::class)->group(function () {
 
 
 // Dashboard Student
-Route::controller(OrderController::class)->group(function () {
-    Route::get('/orders/{id}', 'show');
-    Route::post('/orders', 'store');
+Route::controller(StudentDashboardController::class)->group(function () {
+    Route::get('/student/dashboard', 'index')->middleware('auth:student');
 });
