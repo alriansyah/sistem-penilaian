@@ -101,7 +101,6 @@
             <div class="mb-4">
                 <label for="name" class="label-control">Role</label>
                 <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                    <option value="{{ $studentList->role->id }}">{{ $studentList->role->name }}</option>
                     @if ($studentList->role != null)
                         <option value="{{ $studentList->role->id }}">{{ $studentList->role->name }}</option>
                     @else
