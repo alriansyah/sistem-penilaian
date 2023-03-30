@@ -104,7 +104,7 @@ Route::controller(NilaiController::class)->group(function () {
 
 // Dashboard Student
 Route::controller(StudentDashboardController::class)->group(function () {
-    Route::get('/student/dashboard', 'index')->middleware('auth:student');
+    Route::get('/student/dashboard', 'index')->middleware(['auth:student', 'student']);
 });
 
 
