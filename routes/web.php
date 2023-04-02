@@ -101,12 +101,10 @@ Route::controller(NilaiController::class)->group(function () {
     Route::post('/nilai/{id}', 'update')->middleware(['auth:web,student,teacher', 'admin']);
 });
 
-
 // Dashboard Student
 Route::controller(StudentDashboardController::class)->group(function () {
     Route::get('/student/dashboard', 'index')->middleware(['auth:student,web,teacher', 'student']);
 });
-
 
 // Dashboard Taecher
 Route::controller(TeacherDashboardController::class)->group(function () {
