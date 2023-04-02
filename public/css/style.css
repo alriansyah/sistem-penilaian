@@ -1,0 +1,50 @@
+/* Custom */
+.debug {
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.w-30 {
+    max-width: 30%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-65 {
+    width: 65%;
+}
+
+.reset {
+    margin: 0px;
+    padding: 0px;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.text-blac {
+    color: whitesmoke;
+}
+
+.login-box {
+    border: 1px solid black;
+    width: 500px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.color {
+    color: white;
+}
+
+@media (max-width: 578px) {
+
+    /* custom login form resposive */
+    .login-box {
+        width: 90%;
+    }
+}
